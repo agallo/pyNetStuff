@@ -1,0 +1,30 @@
+see http://networkx.readthedocs.org/en/stable/reference/classes.digraph.html
+for add path function
+idea is to add a path (edges between nodes) from a long list (eg, ASpath) rather than one edge at a time
+
+
+using networkx
+also using graphviz and pydot
+pydot relies on graphviz and pyparsing
+
+trouble importing pydot, try using pip install pydot2
+
+not sure if this work can do without networkx and use graphviz/dot directly
+
+write current networkx graph as a graphviz file:
+nx.write_dot(DG, '/home/agallo/tmp/first.dot')
+
+
+to set a node attribute after the node is created:
+nx.set_node_attributes(DG, 'ASname', {11039:'GW'})
+             graph-----^      ^           ^
+           attribute name-----|           |
+    dictionary of node names to values----|
+
+these attributes will be converted to node (and edge?) attributes when converted to dot format
+eg:
+nx.set_node_attributes(DG, 'style', {11039:'filled'})
+nx.set_node_attributes(DG, 'color', {11039:'blue'})
+
+line from dot file:
+11039 [color=blue, style=filled, ASname=GW];
