@@ -2,6 +2,20 @@ see http://networkx.readthedocs.org/en/stable/reference/classes.digraph.html
 for add path function
 idea is to add a path (edges between nodes) from a long list (eg, ASpath) rather than one edge at a time
 
+to add a path of edges (and create the nodes if they don't already exist in the graph):
+DG.add_path([11039, 174, 3356, 13546])
+
+To add paths with an attribute:
+DG.add_path([11039, 174, 3356, 13546],localpref=100)
+
+which results in:
+>>> DG.edges(data=True)
+[(3356, 13546, {'localpref': 100}), (174, 3356, {'localpref': 100}), (11039, 174, {'localpref': 100})]
+
+This may be a bit misleading for LocalPref since we have no idea what the localpref is outside our AS
+(maybe have a different(lighter) color for paths beyond the first hop?)
+
+
 
 using networkx
 also using graphviz and pydot
