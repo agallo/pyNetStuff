@@ -28,3 +28,20 @@ nx.set_node_attributes(DG, 'color', {11039:'blue'})
 
 line from dot file:
 11039 [color=blue, style=filled, ASname=GW];
+
+
+
+to add attributes to an existing edge:
+the format is GRAPH[node1][node2]['attributename'] = value
+DG[11039][174]['LocalPref'] = 100
+
+the result is:
+>>> DG[11039][174]
+{'LocalPref': 100}
+
+>>> DG[11039][174]['color']='blue'
+>>> DG[11039][174]
+{'color': 'blue', 'LocalPref': 100}
+
+
+These attributes will be carried through to the dot file when converted with the above command
