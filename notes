@@ -13,7 +13,8 @@ which results in:
 [(3356, 13546, {'localpref': 100}), (174, 3356, {'localpref': 100}), (11039, 174, {'localpref': 100})]
 
 This may be a bit misleading for LocalPref since we have no idea what the localpref is outside our AS
-(maybe have a different(lighter) color for paths beyond the first hop?)
+(maybe have a different(lighter) color for paths beyond the first hop? - probably should only set this
+attribute on the first hop (ie- GW to ISP).
 
 
 
@@ -35,18 +36,19 @@ nx.set_node_attributes(DG, 'ASname', {11039:'GW'})
            attribute name-----|           |
     dictionary of node names to values----|
 
-these attributes will be converted to node (and edge?) attributes when converted to dot format
+these attributes will be converted to node attributes when converted to dot format
 eg:
 nx.set_node_attributes(DG, 'style', {11039:'filled'})
 nx.set_node_attributes(DG, 'color', {11039:'blue'})
 
-line from dot file:
+results in this line from a dot file:
 11039 [color=blue, style=filled, ASname=GW];
 
 
 
 to add attributes to an existing edge:
 the format is GRAPH[node1][node2]['attributename'] = value
+eg:
 DG[11039][174]['LocalPref'] = 100
 
 the result is:
