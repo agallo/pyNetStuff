@@ -9,7 +9,8 @@ DG = nx.DiGraph()
 ASpath1=[11039, 174, 14743, 13546]
 
 # add edges to directed graph from a list
-# new nodes will be crated
+# new nodes will be created as needed (ie, if they don't exist in DG, they'll be created, existing nodes
+# will not be duplicated)
 DG.add_path(ASpath1)
 
 print 'Nodes so far: ' + str((DG.nodes()))
