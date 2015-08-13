@@ -61,3 +61,11 @@ the result is:
 
 
 These attributes will be carried through to the dot file when converted with the above command
+
+To get a list of edges from a specific node (look up by node label)
+>>> DG.out_edges(['GW'])
+[('GW', '4901'), ('GW', '6461')]
+
+This will be useful to easily cull first hop autonomous systems from GW
+
+
